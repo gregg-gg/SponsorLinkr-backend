@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=sponsorlinkr
+POSTGRES_USER=fmMflxesRCGfxGxlpsmAPZXNgajbVXso
+POSTGRES_PASSWORD=JV83Rk5KSdIn9G9DZOE2vKDwN7Xsq4Kwrit3kjm6gilzUENsl0tM0Eo33Ga1ss9w
