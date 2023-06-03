@@ -17,3 +17,7 @@ CELERY_FLOWER_PASSWORD=Sd1nDWXT0pGhC31lssuB3JodRscB64lNZmVjOJOQxA4qxh3yiGDfR5CXd
 # Linkedin
 # ------------------------------------------------------------------------------
 LINKEDIN_CLIENT_SECRET=NBwb1N0Z3YDDsHGM
+
+# Other
+# ------------------------------------------------------------------------------
+DEVPOST_TOKEN=a0fb996f0a4737c8ea416545c4072620edfa654d

@@ -79,6 +79,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "sponsorlinkr.users",
+    "sponsorlinkr.core",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -330,3 +331,5 @@ LINKEDIN_CLIENT_SECRET=env("LINKEDIN_CLIENT_SECRET")
 LINKEDIN_CLIENT_ID="864siauvsuqfcz"
 LINKEDIN_REDIRECT_URI="http://localhost:8000/api/users/linkedin/callback/"
 LINKEDIN_FRONTEND_REDIRECT="http://localhost:3000/"
+
+DEVPOST_TOKEN=env("DEVPOST_TOKEN")
