@@ -106,6 +106,7 @@ class LinkedinCallBack(APIView):
         # Redirect to frontend along with token in cookie
         response = Response(status=status.HTTP_302_FOUND)
         response.set_cookie("token", token.key)
+        response.set_cookie("user_id", user.id)
         response["Location"] = settings.LINKEDIN_FRONTEND_REDIRECT
 
         return response
