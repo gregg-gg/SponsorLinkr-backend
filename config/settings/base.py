@@ -331,6 +331,9 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
     "SERVE_PERMISSIONS": ["rest_framework.permissions.IsAdminUser"],
 }
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 # Your stuff...
 # ------------------------------------------------------------------------------
 LINKEDIN_CLIENT_SECRET = env("LINKEDIN_CLIENT_SECRET")
