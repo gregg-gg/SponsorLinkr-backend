@@ -1,7 +1,8 @@
+from django.db import models
 from django.utils import timezone
 
-from django.db import models
 from sponsorlinkr.users.models import User
+
 
 # Create your models here.
 class POC(models.Model):

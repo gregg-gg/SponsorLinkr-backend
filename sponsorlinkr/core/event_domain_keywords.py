@@ -30,7 +30,7 @@ event_domain_keywords = {
         "cyber",
         "security",
         "information security",
-        "information",  
+        "information",
         "information technology",
         "information tech",
         "information technologies",

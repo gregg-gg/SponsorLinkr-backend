@@ -333,14 +333,14 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
-LINKEDIN_CLIENT_SECRET=env("LINKEDIN_CLIENT_SECRET")
-LINKEDIN_CLIENT_ID="864siauvsuqfcz"
-LINKEDIN_REDIRECT_URI="http://localhost:8000/api/users/linkedin/callback/"
-LINKEDIN_FRONTEND_REDIRECT="http://localhost:3000/"
+LINKEDIN_CLIENT_SECRET = env("LINKEDIN_CLIENT_SECRET")
+LINKEDIN_CLIENT_ID = "864siauvsuqfcz"
+LINKEDIN_REDIRECT_URI = "http://localhost:8000/api/users/linkedin/callback/"
+LINKEDIN_FRONTEND_REDIRECT = "http://localhost:5173/app"
 
-DEVPOST_TOKEN=env("DEVPOST_TOKEN")
+DEVPOST_TOKEN = env("DEVPOST_TOKEN")
 
 # Selenium
 # ------------------------------------------------------------------------------
-SELENIUM_USERNAME=env("SELENIUM_USERNAME")
-SELENIUM_PASSWORD=env("SELENIUM_PASSWORD")
+SELENIUM_USERNAME = env("SELENIUM_USERNAME")
+SELENIUM_PASSWORD = env("SELENIUM_PASSWORD")

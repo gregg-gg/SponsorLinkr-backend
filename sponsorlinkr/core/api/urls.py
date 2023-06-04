@@ -1,9 +1,6 @@
 from django.urls import path
-from sponsorlinkr.core.api.views.events import (
-    EventView,
-    FetchCompaniesForEvent,
-    FetchPOCsForEvent,
-)    
+
+from sponsorlinkr.core.api.views.events import EventView, FetchCompaniesForEvent, FetchPOCsForEvent
 
 app_name = "core"
 

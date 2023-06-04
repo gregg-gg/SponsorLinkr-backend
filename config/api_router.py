@@ -1,6 +1,7 @@
 from django.conf import settings
-from rest_framework.routers import DefaultRouter, SimpleRouter
 from django.urls.conf import include, re_path
+from rest_framework.routers import DefaultRouter, SimpleRouter
+
 from sponsorlinkr.users.api.views import UserViewSet
 
 if settings.DEBUG:
