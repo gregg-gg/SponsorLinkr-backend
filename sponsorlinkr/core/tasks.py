@@ -1,9 +1,12 @@
-from config.celery_app import app
 from django.utils import timezone
+
+from config.celery_app import app
+from sponsorlinkr.core.linkedin_integration.linkedin import get_company_details
+
 # from linkedin_scraper import actions
 from sponsorlinkr.core.models import Company
 from sponsorlinkr.core.scrapers.devpost import fetch_devpost_sponsors
-from sponsorlinkr.core.linkedin_integration.linkedin import get_company_details
+
 
 @app.task(soft_time_limit=120, name="fetch_companies")
 def fetch_companies():

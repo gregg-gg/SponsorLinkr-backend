@@ -1,22 +1,25 @@
-import requests
-import pandas as pd
 import re
+
+import pandas as pd
+import requests
 from bs4 import BeautifulSoup as bs
 from django.conf import settings
 
-USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+)
 
 
 def scrape_hackathon_html(html_data) -> list:
     sponsor_companies = []
-    soup = bs(html_data, 'html.parser')
-    sponsor_divs = soup.find_all("div",attrs={'id':'sponsor-tiles'})
-    if len(sponsor_divs)==0:
+    soup = bs(html_data, "html.parser")
+    sponsor_divs = soup.find_all("div", attrs={"id": "sponsor-tiles"})
+    if len(sponsor_divs) == 0:
         return
     for text in sponsor_divs:
-        company_links = text.find_all('img')
+        company_links = text.find_all("img")
         for text in company_links:
-            company_name = (text['alt'])
+            company_name = text["alt"]
             sponsor_companies.append(company_name)
     return sponsor_companies
 
@@ -24,7 +27,11 @@ def scrape_hackathon_html(html_data) -> list:
 def fetch_devpost_sponsors(pages=1):
     sponsor_companies = []
     BASE_URL = "https://devpost.com/api/hackathons?page="
-    HEADERS = ({'User-Agent': USER_AGENT , "Accept-Language": 'en-US, en;q=0.5', 'Authorization': f'Bearer {settings.DEVPOST_TOKEN}'})
+    HEADERS = {
+        "User-Agent": USER_AGENT,
+        "Accept-Language": "en-US, en;q=0.5",
+        "Authorization": f"Bearer {settings.DEVPOST_TOKEN}",
+    }
     for i in range(pages):
         URL = BASE_URL + str(i)
         hackathons_resp = requests.get(URL, headers=HEADERS)
