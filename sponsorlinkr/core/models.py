@@ -13,7 +13,7 @@ class POC(models.Model):
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     job_title = models.CharField(max_length=255)
-    company = models.ForeignKey("Company", on_delete=models.CASCADE)
+    company = models.ForeignKey("Company", on_delete=models.CASCADE, related_name="pocs")
     synced_on = models.DateTimeField(default=timezone.now)
     linkedin_id = models.CharField(max_length=255)
     linkedin_profile_url = models.URLField()
@@ -103,7 +103,7 @@ class Sponsorship(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="sponsors")
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name="sponsored_events")
     poc = models.ForeignKey(POC, on_delete=models.CASCADE, related_name="sponsored_events")
-    amount = models.IntegerField()
+    amount = models.IntegerField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     confirmed = models.BooleanField(default=False)
 

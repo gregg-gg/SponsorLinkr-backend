@@ -13,20 +13,20 @@ class EventView(ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     @staticmethod
-    def get(request, event_id=None):
-        if event_id:
-            event = get_object_or_404(id=event_id)
-            serializer = EventSerializer(event)
-            return Response(status=status.HTTP_200_OK, data=serializer.data)
-        else:
-            page = request.query_params.get("page", 1)
-            page_size = 15
-            start = (page - 1) * page_size
-            end = start + page_size
+    def list(request):
+        # if event_id:
+        #     event = get_object_or_404(id=event_id)
+        #     serializer = EventSerializer(event)
+        #     return Response(status=status.HTTP_200_OK, data=serializer.data)
+        # else:
+        page = request.query_params.get("page", 1)
+        page_size = 15
+        start = (page - 1) * page_size
+        end = start + page_size
 
-            events = Event.objects.order_by("-created_on")[start:end]
-            serializer = EventSerializer(events, many=True)
-            return Response(status=status.HTTP_200_OK, data=serializer.data)
+        events = Event.objects.order_by("-created_on")[start:end]
+        serializer = EventSerializer(events, many=True)
+        return Response(status=status.HTTP_200_OK, data=serializer.data)
 
     @staticmethod
     def post(request):
@@ -102,7 +102,9 @@ class FetchCompaniesForEvent(APIView):
             "-sponsored_events__created_on"
         )[:size]
 
-        event.contacted_companies.add(*set(companies))
+        for company in companies:
+            for poc in company.pocs.all():
+                Sponsorship.objects.create(company=company, event=event, poc=poc)
 
         return Response({"detail": "Companies fetched successfully."}, status=status.HTTP_200_OK)
 
@@ -120,7 +122,8 @@ class FetchPOCsForEvent(APIView):
                 status=status.HTTP_403_FORBIDDEN,
             )
 
-        serializer = POCSerializer(event.sponsors.poc.all(), many=True)
+        pocs = POC.objects.filter(sponsored_events__event=event)
+        serializer = POCSerializer(pocs, many=True)
         return Response(status=status.HTTP_200_OK, data=serializer.data)
 
     @staticmethod
@@ -137,6 +140,6 @@ class FetchPOCsForEvent(APIView):
         # POCs that have sponsored in last 6 months
         pocs = POC.objects.exclude(id__in=event.contacted_pocs).order_by("-sponsorship__created_on")[:size]
 
-        event.contacted_pocs.add(*set(pocs))
+        event.sponsored_events.add(*set(pocs))
 
         return Response({"detail": "POCs fetched successfully."}, status=status.HTTP_200_OK)
