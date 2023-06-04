@@ -11,11 +11,7 @@ from django.urls import reverse
 from sponsorlinkr.users.forms import UserAdminChangeForm
 from sponsorlinkr.users.models import User
 from sponsorlinkr.users.tests.factories import UserFactory
-from sponsorlinkr.users.views import (
-    UserRedirectView,
-    UserUpdateView,
-    user_detail_view,
-)
+from sponsorlinkr.users.views import UserRedirectView, UserUpdateView, user_detail_view
 
 pytestmark = pytest.mark.django_db
 

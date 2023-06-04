@@ -1,7 +1,6 @@
 from django.urls import path
-from sponsorlinkr.users.api.views import (
-    LinkedinCallBack,
-)
+
+from sponsorlinkr.users.api.views import LinkedinCallBack
 
 app_name = "users"
 
