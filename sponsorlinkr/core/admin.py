@@ -20,9 +20,9 @@ class EventAdmin(admin.ModelAdmin):
 
 @admin.register(POC)
 class POCAdmin(admin.ModelAdmin):
-    list_display = ["name", "job_title", "email", "synced_on"]
-    search_fields = ["name"]
-    list_filter = ["synced_on"]
+    list_display = ["name", "job_title", "company", "email", "synced_on"]
+    search_fields = ["name", "company__name"]
+    list_filter = ["synced_on", "company"]
 
 
 @admin.register(Sponsorship)

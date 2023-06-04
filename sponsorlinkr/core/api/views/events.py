@@ -122,7 +122,9 @@ class FetchPOCsForEvent(APIView):
                 status=status.HTTP_403_FORBIDDEN,
             )
 
-        pocs = POC.objects.filter(sponsored_events__event=event)
+
+        pocs = POC.objects.filter(sponsored_events__event=event)[:30]
+
         serializer = POCSerializer(pocs, many=True)
         return Response(status=status.HTTP_200_OK, data=serializer.data)
 
